@@ -23,13 +23,16 @@ This kit is **JavaScript-first**, using **JSX instead of TSX**, making it access
 ✔️ **TailwindCSS 4** – Modern styling with utility-first CSS.  
 ✔️ **Vite-Powered** – Lightning-fast HMR for smooth development.  
 ✔️ **Pre-configured Testing** – Includes PHPUnit & Pest.  
+✔️ **Hero UI** – Beautiful, fast and modern React UI library for building accessible and customizable web applications.  
 ✔️ **Quick Setup** – Get started in minutes!
 
 ---
 
 ## 🛠 Getting Started
 
-### 1️⃣ Install
+### 1️⃣ Install the Yui Installer
+
+Install the Yui installer globally using Composer:
 
 ```bash
 composer global require luis-developer-08/yui-installer
@@ -37,17 +40,53 @@ composer global require luis-developer-08/yui-installer
 
 ### 2️⃣ Create a New Laravel Project
 
+Use the Yui installer to generate a new Laravel project:
+
 ```bash
 yui new my-laravel-app
 ```
 
-🎉 Your application is now up and running!
+### 3️⃣ Select Your Database
+
+During installation, you will be prompted to choose a database. Select the one you want by entering the corresponding number:
+
+```bash
+[0] sqlite
+[1] mysql
+```
+
+### 4️⃣ Choose a UI Provider
+
+Next, select your preferred UI provider. Choose **Hero UI** for a beautiful and customizable interface:
+
+```bash
+[0] None
+[1] Hero UI
+```
+
+### 5️⃣ Navigate to Your Project Directory
+
+After the project is created, navigate to the project folder:
+
+```bash
+cd my-laravel-app
+```
+
+### 6️⃣ Start the Development Server
+
+Run the following command to start the development server:
+
+```bash
+composer run dev
+```
+
+### 🎉 Your application is now configured and running!
 
 ---
 
 ## ⚡ Create Inertia Components Easily
 
-This starter kit includes a custom Artisan command to quickly generate Inertia.js React components:
+This starter kit includes a custom Artisan command to quickly generate Inertia.js React components with flexible directory options.
 
 ### 🏗️ Generate a New Component
 
@@ -55,12 +94,43 @@ This starter kit includes a custom Artisan command to quickly generate Inertia.j
 php artisan make:inertia Components/MyComponent
 ```
 
-This will create a new file at `resources/js/Components/MyComponent.jsx` with a basic component template.
-
-### 📂 File Structure
+This will create:
 
 ```
 resources/js/Components/MyComponent.jsx
+```
+
+### 📂 Flexible Folder Placement
+
+You can specify different folders using flags:
+
+-   `-c` or `--components`: Create the component in `resources/js/Components/`
+-   `-l` or `--layouts`: Create the component in `resources/js/Layouts/`
+-   `-s` or `--sections`: Create the component in `resources/js/Sections/`
+-   `-p` or `--pages`: Create the component in `resources/js/Pages/`
+
+✅ **Example usage with flags:**
+
+```bash
+php artisan make:inertia Dashboard -p
+```
+
+Creates:
+
+```
+resources/js/Pages/Dashboard.jsx
+```
+
+You can also create nested folders like:
+
+```bash
+php artisan make:inertia Components/Auth/Login
+```
+
+Creates:
+
+```
+resources/js/Components/Auth/Login.jsx
 ```
 
 ### ✨ Example Generated Component
@@ -74,6 +144,14 @@ const MyComponent = () => {
 
 export default MyComponent;
 ```
+
+### 🚀 Smart Behavior
+
+-   Automatically prevents duplicate folder nesting.
+-   Opens the newly created file in your default editor.
+-   Ensures the correct folder placement, whether using flags or specifying the path.
+
+---
 
 This command ensures that components are placed in the correct directory and prevents overwriting existing files. It also automatically opens the newly created file for editing.
 
